@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ACC Quiz (Ch1–4) – Practice</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <div class="logo">ACC</div>
+      <div>
+        <h1>Accounting Comprehensive Quiz (Chapters 1–4)</h1>
+        <p class="sub">Practice • Review • Flashcards • Mistakes list</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <button id="modeQuizBtn" class="btn btn-primary">Quiz Mode</button>
+      <button id="modeFlashBtn" class="btn">Flashcards</button>
+      <button id="shuffleBtn" class="btn">Shuffle</button>
+      <button id="resetBtn" class="btn btn-danger">Reset</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <div class="panel-top">
+        <div class="stats">
+          <div class="chip"><span id="progressText">0/10</span> done</div>
+          <div class="chip">Score: <span id="scoreText">0</span>/10</div>
+          <div class="chip">Correct: <span id="correctText">0</span></div>
+          <div class="chip">Wrong: <span id="wrongText">0</span></div>
+        </div>
+
+        <div class="filters">
+          <label class="select">
+            <span>Section</span>
+            <select id="sectionFilter">
+              <option value="all">All</option>
+              <option value="theory">Part 1 – Theoretical Concepts</option>
+              <option value="practice">Part 2 – Practical Exercises</option>
+            </select>
+          </label>
+
+          <label class="select">
+            <span>Show</span>
+            <select id="showFilter">
+              <option value="all">All questions</option>
+              <option value="unanswered">Unanswered</option>
+              <option value="wrong">Wrong only</option>
+              <option value="correct">Correct only</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- QUIZ VIEW -->
+      <section id="quizView" class="view">
+        <div class="question-card">
+          <div class="q-meta">
+            <span id="qTag" class="tag">Part 1</span>
+            <span id="qIndex" class="muted">Question 1 of 10</span>
+          </div>
+
+          <h2 id="qText" class="q-text">Loading…</h2>
+
+          <div id="choices" class="choices"></div>
+
+          <div class="actions">
+            <button id="prevBtn" class="btn">← Prev</button>
+            <button id="checkBtn" class="btn btn-primary">Check</button>
+            <button id="nextBtn" class="btn">Next →</button>
+          </div>
+
+          <div id="feedback" class="feedback hidden">
+            <div class="feedback-head">
+              <div id="resultPill" class="pill">—</div>
+              <div class="muted">Correct answer: <b id="correctAnsText">—</b></div>
+            </div>
+            <p id="explainText" class="explain">—</p>
+          </div>
+        </div>
+
+        <div class="side">
+          <div class="side-card">
+            <h3>Quick Navigation</h3>
+            <div id="navGrid" class="nav-grid"></div>
+          </div>
+
+          <div class="side-card">
+            <h3>Mistakes</h3>
+            <div id="mistakesBox" class="mistakes muted">
+              No mistakes yet. Keep slicing it.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FLASHCARDS VIEW -->
+      <section id="flashView" class="view hidden">
+        <div class="flash">
+          <div class="flash-card" id="flashCard" role="button" tabindex="0">
+            <div class="flash-hint muted">Click / Space to flip</div>
+            <div id="flashFront" class="flash-front"></div>
+            <div id="flashBack" class="flash-back hidden"></div>
+          </div>
+
+          <div class="flash-actions">
+            <button id="flashPrevBtn" class="btn">← Prev</button>
+            <button id="flashFlipBtn" class="btn btn-primary">Flip</button>
+            <button id="flashNextBtn" class="btn">Next →</button>
+          </div>
+
+          <div class="muted flash-tip">
+            Tip: In flashcards, focus on <b>why</b> the correct choice is correct—your brain loves reasons.
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <div class="muted">
+        Offline-ready. Your answers are saved in your browser (localStorage).
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
